@@ -37,6 +37,7 @@ class Leaf(app_commands.Group):
 
   @app_commands.command(name='peek',
                         description="view someone else's leaf stats")
+  @app_commands.describe(target='who to peek at')
   async def peek(self, ctx: discord.Interaction, target: discord.Member):
     if (str(target.id) in db.keys()):
       user = db[str(target.id)]

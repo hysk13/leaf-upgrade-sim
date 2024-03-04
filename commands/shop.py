@@ -8,6 +8,7 @@ from assets.leaf_data import leaf_data
 class Shop(app_commands.Group):
 
   @app_commands.command(name='sell')
+  @app_commands.describe(sure='are you sure?')
   async def sell(self, ctx: discord.Interaction, sure: bool):
     if (str(ctx.user.id) in db.keys()):
       if (sure):
@@ -30,6 +31,7 @@ class Shop(app_commands.Group):
       )
 
   @app_commands.command(name='rankup')
+  @app_commands.describe(sure='are you sure?')
   async def rankup(self, ctx: discord.Interaction, sure: bool):
     if (str(ctx.user.id) in db.keys()):
       if (sure):

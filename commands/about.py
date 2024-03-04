@@ -22,6 +22,15 @@ class About(app_commands.Group):
   async def cmds(self, ctx: discord.Interaction):
     await ctx.response.send_message("\n".join(cmds))
 
+  @app_commands.command(name='src', description='link to source code')
+  async def src(self, ctx: discord.Interaction):
+    src_embed = discord.Embed(
+        color=discord.Color.dark_purple(),
+        url="https://github.com/hysk13/leaf-upgrade-sim",
+        title="Source Code",
+        description="Source code to the {Leaf Upgrade Simulator} on GitHub")
+    await ctx.response.send_message(embed=src_embed)
+
 
 async def setup(client):
   client.tree.add_command(About(name="about", description="about commands"))

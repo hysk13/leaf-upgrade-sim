@@ -22,9 +22,7 @@ class Character(app_commands.Group):
       user_stats.add_field(name='Coin',
                            value=f"{user['coins']} coins",
                            inline=True)
-      user_stats.add_field(name='Rank',
-                           value=user['start-point'],
-                           inline=True)
+      user_stats.add_field(name='Rank', value=user['start-point'], inline=True)
       await ctx.response.send_message(embed=user_stats)
     else:
       await ctx.response.send_message(
@@ -33,6 +31,7 @@ class Character(app_commands.Group):
 
   @app_commands.command(name='compare',
                         description='compare with another player')
+  @app_commands.describe(target='who to compare to')
   async def compare(self, ctx: discord.Interaction, target: discord.Member):
     if (str(ctx.user.id) in db.keys() and str(target.id) in db.keys()):
       user = db[str(ctx.user.id)]
