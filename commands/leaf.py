@@ -42,7 +42,7 @@ class Leaf(app_commands.Group):
     if (str(target.id) in db.keys()):
       user = db[str(target.id)]
       leaf_stats = discord.Embed(color=discord.Color.blue())
-      leaf_stats.set_author(name=f"{ctx.user.name}'s Leaf:",
+      leaf_stats.set_author(name=f"{target}'s Leaf:",
                             icon_url=ctx.user.avatar.url)
       leaf_stats.add_field(
           name='Leaf Description',
